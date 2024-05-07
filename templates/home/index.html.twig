@@ -1,0 +1,23 @@
+{# templates/home/index.html.twig #}
+{% if user != "Гость" %}
+    <p>Добро пожаловать, {{ user }}!</p>
+    <a href="{{ path('logout') }}">Выйти</a>
+    <a href="{{ path('post_new') }}">Создать пост</a>
+{% else %}
+    <p>Чтобы создать пост, пожалуйста, <a href="{{ path('login') }}">войдите</a> или <a href="{{ path('register') }}">зарегистрируйтесь</a>.</p>
+{% endif %}
+
+<h2>Посты</h2>
+<div class="posts">
+    {% for post in posts %}
+        <div class="post">
+            <h3>{{ post.title }}</h3>
+            <p class="author">Автор: {{ post.username }}</p>
+            <p class="date">Опубликовано: {{ post.published_at|date('Y-m-d H:i') }}</p>
+            <div class="content">{{ post.content }}</div>
+            {% if post.photo %}
+                <img src="{{ asset('uploads/' ~ post.photo) }}" alt="Фото поста">
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>

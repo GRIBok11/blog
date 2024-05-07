@@ -1,0 +1,13 @@
+{# templates/registration/register.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<h1>Register</h1>
+
+{{ form_start(registrationForm) }}
+{{ form_widget(registrationForm) }}
+{{ form_end(registrationForm) }}
+  <a href="{{ path('blog_index') }}">Выйти</a>
+{% endblock %}
